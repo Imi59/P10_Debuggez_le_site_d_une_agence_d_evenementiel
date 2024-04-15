@@ -7,13 +7,17 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
+
+  //  // Tri des événements par date de la plus ancienne à la plus récente
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
+
+  // Fonction pour passer à la diapositive suivante
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
-      5000
+      () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0), // Vérifie si on est à la dernière diapositive
+      5000 // Durée avant de passer à la diapositive suivante (5 secondes)
     );
   };
   useEffect(() => {
@@ -23,7 +27,7 @@ const Slider = () => {
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
         <>
-          <div
+         <div
             key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
@@ -45,7 +49,7 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx}
                 />
               ))}
             </div>
