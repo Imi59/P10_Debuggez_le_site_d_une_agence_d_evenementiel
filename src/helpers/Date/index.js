@@ -15,4 +15,4 @@ export const MONTHS = {
 
 
 export const getMonth = (date) => MONTHS[date.getMonth()];
-// ce code fournit un moyen de convertir une date JavaScript en une chaîne de caractères représentant le mois en français.
+// ce code fournit un moyen de convertir une date JavaScript en une chaîne de caractères représentant le mois en français
