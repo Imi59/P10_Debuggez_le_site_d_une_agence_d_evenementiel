@@ -13,7 +13,10 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const { data } = useData();  // Récupère les données de l'application à l'aide du hook useData()
+const last = data ? data.events[data.events.length - 1] : null;  // Vérifie si data est défini, si oui, récupère la dernière prestation d'événement dans data.events, sinon, last est défini comme null
+
+  
   return <>
     <header>
       <Menu />
@@ -116,13 +119,16 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
-          small
-          label="boom"
-        />
+        {last && (  // Vérifie si last est défini et différent de null ou undefined
+  <EventCard
+    imageSrc={last?.cover}  // Utilise l'URL de la couverture de last s'il est défini
+    title={last?.title}  // Utilise le titre de last s'il est défini
+    date={new Date(last?.date)}  // Utilise la date de last s'il est défini, convertie en objet Date
+    small  // Ajoute une prop small à EventCard (peut-être pour modifier le style ou la taille)
+    label="boom"  // Ajoute une prop label à EventCard avec la valeur "boom"
+  />
+)}  
+
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
