@@ -5,9 +5,11 @@ import "./style.scss";
 
 const Modal = ({ opened, Content, children }) => {
   const [isOpened, setIsOpened] = useState(opened);
+  // Utilisation de useEffect pour surveiller le changement de la prop "opened"
   useEffect(() => {
+    // Mise à jour de la valeur de "isOpened" lorsque la prop "opened" change
     setIsOpened(opened);
-  }, [opened]);
+  }, [opened]); // Déclenche useEffect lorsque la valeur de "opened" change
   return (
     <>
       {children({ isOpened, setIsOpened })}
