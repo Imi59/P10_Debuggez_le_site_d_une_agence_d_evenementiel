@@ -121,7 +121,7 @@ const Page = () => {
               imageSrc={last?.cover} // Utilise l'URL de la couverture de last s'il est défini
               title={last?.title} // Utilise le titre de last s'il est défini
               date={new Date(last?.date)} // Utilise la date de last s'il est défini, convertie en objet Date
-              small // Ajoute une prop small à EventCard (peut-être pour modifier le style ou la taille)
+              small // Ajoute une prop small à EventCard pour modifier la taille
               label="boom" // Ajoute une prop label à EventCard avec la valeur "boom"
             />
           )}
